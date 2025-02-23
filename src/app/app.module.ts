@@ -12,7 +12,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { reducers, metaReducers, reducers, metaReducers } from './reducers';
+import { reducers, metaReducers } from './reducers';
 
 const routes: Routes = [
     {

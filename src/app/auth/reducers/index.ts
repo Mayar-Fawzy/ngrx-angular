@@ -6,16 +6,16 @@ import {
     MetaReducer, on
 } from '@ngrx/store';
 import {User} from '../model/user.model';
-import {AuthActions} from '../action-types';
+import * as AuthActions from '../actions/action-types';
 
 
 
 export interface AuthState {
-    user: User
+    user: User | null
 }
 
 export const initialAuthState: AuthState = {
-    user: undefined
+    user: null
 };
 
 export const authReducer = createReducer(

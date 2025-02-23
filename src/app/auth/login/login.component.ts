@@ -7,7 +7,7 @@ import {AuthService} from "../auth.service";
 import {tap} from "rxjs/operators";
 import {noop} from "rxjs";
 import {Router} from "@angular/router";
-import { AppState } from '../reducers';
+import { AuthState } from '../reducers';
 import { login } from '../auth.action';
 
 @Component({
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       private fb:UntypedFormBuilder,
       private auth: AuthService,
       private router:Router,
-    private store: Store<AppState>
+    private store: Store<AuthState>
     ) {
 
 

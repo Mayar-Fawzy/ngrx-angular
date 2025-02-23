@@ -1,23 +1,36 @@
-import { isDevMode } from '@angular/core';
+import { isDevMode } from "@angular/core";
 import {
   ActionReducer,
   ActionReducerMap,
   createFeatureSelector,
+  createReducer,
   createSelector,
-  MetaReducer
-} from '@ngrx/store';
+  MetaReducer,
+  on,
+} from "@ngrx/store";
+import { User } from "../model/user.model";
+import { AuthAction } from "../auth_types";
+import { stat } from "fs";
 
-export const authFeatureKey = 'auth';
+export const authFeatureKey = "auth";
 
-export interface AppState {
+export interface AuthState {
   //save User Email And Password Here
-  
-
+  user: User;
 }
-
-export const reducers: ActionReducerMap<AppState> = {
-
+export const initialAuthState: AuthState = {
+  user: undefined,
 };
 
+export const metaReducers: MetaReducer<AuthState>[] = isDevMode() ? [] : [];
 
-export const metaReducers: MetaReducer<AppState>[] = isDevMode() ? [] : [];
+//create reducer
+export const authReducer = createReducer(
+  initialAuthState,
+  //الحاجه الي هترد علي ال action الي حصل
+  on(AuthAction.login, (state, action) => {
+    return {
+      user: action.user
+    };
+  })
+);

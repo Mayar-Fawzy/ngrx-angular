@@ -10,7 +10,6 @@ import {
 } from "@ngrx/store";
 import { User } from "../model/user.model";
 import { AuthAction } from "../auth_types";
-import { stat } from "fs";
 
 export const authFeatureKey = "auth";
 

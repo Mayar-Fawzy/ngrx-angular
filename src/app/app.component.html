@@ -1,28 +1,29 @@
+<p-button
+  (click)="sidebarVisible = true"
+  class="menu-button"
+  icon="pi pi-arrow-right"
+></p-button>
+<p-sidebar [(visible)]="sidebarVisible">
+  <ul class="menu-list">
+    <li>
+      <a routerLink="/blogs" routerLinkActive="'active'">
+        <span class="pi pi-list"></span>
+        <span>blogs</span>
+      </a>
+    </li>
+    <li *ngIf="isloggedOut$ | async">
+      <a routerLink="/login" routerLinkActive="'active'">
+        <span class="pi pi-sign-in"></span>
+        <span>Login</span>
+      </a>
+    </li>
+    <li *ngIf="isloggedIn$ | async">
+      <a routerLink="/login" routerLinkActive="'active'" (click)="logout()">
+        <span class="pi pi-sign-out"></span>
+        <span>Logout</span>
+      </a>
+    </li>
+  </ul>
+</p-sidebar>
 
-    <p-button (click)="sidebarVisible = true" class="menu-button" icon="pi pi-arrow-right"></p-button>
-    <p-sidebar [(visible)]="sidebarVisible">
-      <ul class="menu-list">
-        <li>
-            <a  routerLink="/blogs" routerLinkActive="'active'">
-                <span class="pi pi-list"></span>
-                <span>blogs</span>
-            </a>
-        </li>
-        <li *ngIf="isLoggedOut$ | async">
-            <a  routerLink="/login" routerLinkActive="'active'">
-                <span class="pi pi-sign-in"></span>
-                <span>Login</span>
-            </a>
-        </li>
-        <li  *ngIf="isLoggedIn$ | async">
-
-        <a   (click)="logout()">
-            <span class="pi pi-sign-out"></span>
-             <span>Logout</span>
-         </a>
-        </li>
-      </ul>
-  </p-sidebar>
-
-
-    <router-outlet></router-outlet>
+<router-outlet></router-outlet>

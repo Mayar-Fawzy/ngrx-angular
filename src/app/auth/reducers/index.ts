@@ -9,13 +9,15 @@ import {
 
 export const authFeatureKey = 'auth';
 
-export interface State {
+export interface AppState {
+  //save User Email And Password Here
+  
 
 }
 
-export const reducers: ActionReducerMap<State> = {
+export const reducers: ActionReducerMap<AppState> = {
 
 };
 
 
-export const metaReducers: MetaReducer<State>[] = isDevMode() ? [] : [];
+export const metaReducers: MetaReducer<AppState>[] = isDevMode() ? [] : [];

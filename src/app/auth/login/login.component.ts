@@ -7,6 +7,8 @@ import {AuthService} from "../auth.service";
 import {tap} from "rxjs/operators";
 import {noop} from "rxjs";
 import {Router} from "@angular/router";
+import { AppState } from '../reducers';
+import { login } from '../auth.action';
 
 @Component({
   selector: 'login',
@@ -23,7 +25,9 @@ export class LoginComponent implements OnInit {
   constructor(
       private fb:UntypedFormBuilder,
       private auth: AuthService,
-      private router:Router,) {
+      private router:Router,
+    private store: Store<AppState>
+    ) {
 
 
   }
@@ -38,7 +42,11 @@ export class LoginComponent implements OnInit {
  //tap => side effect
   this.auth.login(email,password).
   pipe(tap(user=>{
-    this.router.navigateByUrl('/blog')
+    console.log(user);
+    //تخزين ال user ف ال store
+    //dispatch لازم ياخد action
+    this.store.dispatch(login({user}));
+    this.router.navigate(['blogs'])
   })).subscribe(
     //no operation to excute يعني متنفذش حاجه 
     noop,

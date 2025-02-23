@@ -33,6 +33,17 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-  }
+    //distract تفتيت
+    const {email,password}=this.form.value;
+ //tap => side effect
+  this.auth.login(email,password).
+  pipe(tap(user=>{
+    this.router.navigateByUrl('/blog')
+  })).subscribe(
+    //no operation to excute يعني متنفذش حاجه 
+    noop,
+    ()=> alert("Wrong Login")
+  )
+   }
 }
 

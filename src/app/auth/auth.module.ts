@@ -6,6 +6,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {AuthService} from "./auth.service";
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
+import { StoreModule } from '@ngrx/store';
+import * as fromAuth from './reducers';
 
 @NgModule({
     imports: [
@@ -14,6 +16,7 @@ import { PasswordModule } from 'primeng/password';
         InputTextModule,
         PasswordModule,
         RouterModule.forChild([{path: '', component: LoginComponent}]),
+        StoreModule.forFeature(fromAuth.authFeatureKey, fromAuth.reducers, { metaReducers: fromAuth.metaReducers }),
     ],
     declarations: [LoginComponent],
     exports: [LoginComponent]

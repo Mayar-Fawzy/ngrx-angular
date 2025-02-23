@@ -1,40 +1,21 @@
+import { isDevMode } from '@angular/core';
 import {
-    ActionReducer,
-    ActionReducerMap,
-    createFeatureSelector, createReducer,
-    createSelector,
-    MetaReducer, on
+  ActionReducer,
+  ActionReducerMap,
+  createFeatureSelector,
+  createSelector,
+  MetaReducer
 } from '@ngrx/store';
-import {User} from '../model/user.model';
-import * as AuthActions from '../actions/action-types';
 
+export const authFeatureKey = 'auth';
 
+export interface State {
 
-export interface AuthState {
-    user: User | null
 }
 
-export const initialAuthState: AuthState = {
-    user: null
+export const reducers: ActionReducerMap<State> = {
+
 };
 
-export const authReducer = createReducer(
 
-    initialAuthState,
-
-    on(AuthActions.login, (state, action) => {
-        return {
-            user: action.user
-        }
-    }),
-
-    on(AuthActions.logout, (state, action) => {
-        return {
-            user: undefined
-        }
-    })
-
-
-
-);
-
+export const metaReducers: MetaReducer<State>[] = isDevMode() ? [] : [];
